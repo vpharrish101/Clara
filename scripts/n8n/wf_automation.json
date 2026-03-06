@@ -1,0 +1,74 @@
+{
+  "name": "Clara Pipeline",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "command": "python scripts/v1.py"
+      },
+      "name": "Generate V1 Memo",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "command": "python scripts/update.py"
+      },
+      "name": "Extract Updates",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [700, 300]
+    },
+    {
+      "parameters": {
+        "command": "python scripts/v2.py"
+      },
+      "name": "Apply Updates",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [950, 300]
+    },
+    {
+      "parameters": {
+        "command": "python scripts/changelogger.py"
+      },
+      "name": "Generate Change Log",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1200, 300]
+    },
+    {
+      "parameters": {
+        "command": "python scripts/Retell.py"
+      },
+      "name": "Generate Agent Spec",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1450, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{ "node": "Generate V1 Memo", "type": "main", "index": 0 }]]
+    },
+    "Generate V1 Memo": {
+      "main": [[{ "node": "Extract Updates", "type": "main", "index": 0 }]]
+    },
+    "Extract Updates": {
+      "main": [[{ "node": "Apply Updates", "type": "main", "index": 0 }]]
+    },
+    "Apply Updates": {
+      "main": [[{ "node": "Generate Change Log", "type": "main", "index": 0 }]]
+    },
+    "Generate Change Log": {
+      "main": [[{ "node": "Generate Agent Spec", "type": "main", "index": 0 }]]
+    }
+  }
+}

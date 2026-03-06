@@ -1,0 +1,5 @@
+mlflow==3.10.0
+mlflow_skinny==3.10.0
+mlflow_tracing==3.10.0
+python-dotenv==1.2.2
+Requests==2.32.5
