@@ -3,7 +3,8 @@
 What it is: An automated pipeline that ingests client voice transcripts, and converts into structured AI agent configurations and tracks configuration updates from onboarding conversations.
 
 **Architecture: -**
-<img width="1219" height="298" alt="image" src="https://github.com/user-attachments/assets/0ae263e4-f1c8-4fe7-a3cf-4a3079efe959" />
+<img width="1225" height="278" alt="image" src="https://github.com/user-attachments/assets/77dcfba3-dc50-4dd7-bb8e-d498f91ea3c5" />
+
 
 **How it works: -**
 
